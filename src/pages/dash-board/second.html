@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar color="nav" style="height: 70px">
+    <ion-title style="font-size: 50px">
+      <h1>Meetings</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+  
+<ion-content style=" padding-left: 20px; background: radial-gradient(#525252, #202020); ">
+      
+      <flash-card *ngFor="let meeting of meetings" >
+
+        <div class="flash-card-front" style="height: 200px; width:200px; position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)"> 
+
+            <img  src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Circle-128.png"> 
+
+            <img   src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Close_Icon_Dark-128.png"> 
+
+            <button  ion-button (click)="showMeetingDetails($event,meeting);" color="primary" style=" position: absolute;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)"> Show Details </button>
+        </div>
+      
+        <div class="flash-card-back" > <h1 style="color:#fcd736">{{meeting.MeetingSubject}} </h1>
+            
+            <h2 style="color:#fcd736"> Meeting Room: {{meeting.MeetingRoomName}} </h2>
+            
+            <h3 style="color:#fcd736"> Meeting Start: <br> {{meeting.MeetingStartDate}} <br> {{meeting.MeetingStartTime}} </h3>
+            
+           <h3 style="color:#fcd736"> Meeting End: <br> {{meeting.MeetingEndDate}} <br> {{meeting.MeetingEndTime}} </h3>
+
+          </div>
+
+    </flash-card>
+
+     
+
+</ion-content>

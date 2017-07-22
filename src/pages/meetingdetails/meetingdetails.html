@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar hideBackButton color="nav" style="height: 70px">
+  <ion-buttons left>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title><h1>{{meeting.MeetingSubject}}</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-menu [content]="content" side="left" id='menuleft'>
+<ion-header>
+    <ion-toolbar  style="height: 70px">
+      <ion-title> <h1> Agendas </h1> </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list >
+      <button menuClose ion-item *ngFor="let agenda of meeting.MeetingAgendaList; let i=index" data-index="i"
+       menuToggle="menuright-{{i}}">
+        {{agenda.AgendaTitle}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-menu [content]="content" *ngFor="let agenda of meeting.MeetingAgendaList; let agendaIndex=index"  side="right" id='menuright-{{agendaIndex}}'>
+<ion-header>
+    <ion-toolbar  style="height: 70px">
+      <ion-title> <h1> Documents </h1> </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item *ngFor="let d of agenda.AgendaDocuments">
+        {{d.AgendaDocID}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-content padding>
+ 
+<div style="overflow:auto; -webkit-overflow-scrolling:touch;width:100%; height:1200px">
+    <iframe style="width:100%; height:1200px; background: #202020" src="https://drive.google.com/viewerng/viewer?
+url=https://library.osu.edu/assets/Documents/SEL/QuickConvertWordPDF.pdf?
+pid=explorer&efh=false&a=v&chrome=false&embedded=true"></iframe>
+</div>
+
+
+
+</ion-content>
